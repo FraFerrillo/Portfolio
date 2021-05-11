@@ -15,6 +15,10 @@ class CreateAdCategoryTable extends Migration
     {
         Schema::create('ad_category', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger(('ad.id'));
+            $table->foreign('ad_id')->references('id')->on('ads')->onDelete('cascade');
+            $table->unsignedBigInteger(('category_id'));
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }
