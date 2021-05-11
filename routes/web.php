@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//? Create
+Route::get('/crea/annuncio', [AdController::class, 'create'])->name('ads.create');
+Route::post('/salva/annuncio', [AdController::class, 'store'])->name('ads.store');
