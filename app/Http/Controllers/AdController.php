@@ -49,6 +49,7 @@ class AdController extends Controller
         Ad::create([
             'title'=>$request->title,
             'body'=>$request->body,
+            'price'=>$request->price,
             'user_id'=>Auth::id(),
             'category_id'=>$request->category
             // 'img'=>$request->file('img') ? $request->file('img')->store('public/img') : null,
@@ -65,7 +66,7 @@ class AdController extends Controller
      */
     public function show(Ad $ad)
     {
-        //
+        return view('ads.show', compact('ad'));
     }
 
     /**

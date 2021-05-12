@@ -17,7 +17,7 @@ class PublicController extends Controller
     {
         $category = Category::find($category_id);
         $ads = $category->ads()->orderBy('created_at', 'desc')->paginate(5);
-        return view ('ads.show', compact('category', 'ads'));
+        return view ('ads.show_categories', compact('category', 'ads'));
     }
 }
 

@@ -1,26 +1,31 @@
 <x-layout>
-    <div class="container mb-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <h1 class="text-center">Annunci per categoria: {{$category->name}}</h1>
+    <div class="container">
+        <div class="row">
+            @if (session('message'))
+            {{session('message')}}
+            @endif
+            @if ($errors->any())
+            @foreach ($errors->all() as $error)
+            <div class="alert alert-danger my-2">
+                <p>{{$error}}</p>
             </div>
-        </div>
-
-        @foreach ($ads as $ad)
-        <x-_ad
-         title="{{$ad->title}}"
-         body="{{$ad->body}}"
-         href="{{route('public.ads.category',[$category->name,$category->id])}}"
-         category="{{$category->name}}"
-         date="{{$ad->created_at->format('d/m/Y')}}"
-         user="{{$ad->user->name}}"
-        />
-        @endforeach
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                {{$ads->links()}}
-            </div>
+            @endforeach
+            @endif
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">{{$ad->title}}</div>
+                </div>
+                <div class="card-body">
+                    <p>
+                        <img src="https://via.placeholder.com/300x150.png" class="rounded float-right" alt="">
+                        {{$ad->body}}
+                        {{$ad->price}}
+                    </p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <strong>Category: <a>{{$ad->category->name}}</a></strong>
+                    <i>{{$ad->created_at->format('d/m/Y')}} - {{$ad->user->name}}</i>
+                </div>
         </div>
     </div>
 </x-layout>
-

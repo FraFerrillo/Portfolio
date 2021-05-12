@@ -25,5 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //? Create
 Route::get('/crea/annuncio', [AdController::class, 'create'])->name('ads.create');
 Route::post('/salva/annuncio', [AdController::class, 'store'])->name('ads.store');
-
+//? READ
+Route::get('/visualizza/annuncio/{ad}',[AdController::class,'show'])->name('ads.show');
 Route::get ('/category/{name}/{id}/ads', [PublicController::class, 'adByCategory'])->name('public.ads.category');
+

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ad extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','body','user_id','category_id'];
+    protected $fillable = ['title','body','user_id','category_id','price'];
 
     public function user(){
         return $this->belongsTo(User::class);
