@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdCategoryTable extends Migration
+class AddCategoryIdToAds extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateAdCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('ad_category', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('ad_id');
-            $table->foreign('ad_id')->references('id')->on('ads')->onDelete('cascade');
-            $table->unsignedBigInteger('category_id');
+        Schema::table('ads', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id')->default(1);
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->timestamps();
         });
     }
 
@@ -30,6 +26,9 @@ class CreateAdCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ad_category');
+        Schema::table('ads', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+            $table->dropColumn('category_id');
+        });
     }
 }
