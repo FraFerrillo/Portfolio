@@ -6,8 +6,15 @@
             </div>
         </div>
         @foreach ($ads as $ad)
-        <x-_ad ad="{{$ad}}"/>
+        <x-_ad
+         title="{{$ad->title}}"
+         body="{{$ad->body}}"
+         href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
+         category="{{$ad->category->name}}"
+         date="{{$ad->created_at->format('d/m/Y')}}"
+         user="{{$ad->user->name}}"
+        />
         @endforeach
-        
+
     </div>
 </x-layout>
