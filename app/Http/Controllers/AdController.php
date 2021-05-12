@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class AdController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['create','store']);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +51,7 @@ class AdController extends Controller
             'user_id'=>Auth::id()
             // 'img'=>$request->file('img') ? $request->file('img')->store('public/img') : null,
         ]);
-        dd($request->all());
+        
         return redirect()->back()->with('message','Complimenti hai creato un annuncio!');
     }
 
