@@ -45,12 +45,12 @@ class AdController extends Controller
      */
     public function store(AdRequest $request)
     {
-
+        // dd($request->all());
         Ad::create([
             'title'=>$request->title,
             'body'=>$request->body,
             'user_id'=>Auth::id(),
-            'category_id'=>$request->category_id
+            'category_id'=>$request->category
             // 'img'=>$request->file('img') ? $request->file('img')->store('public/img') : null,
         ]);
 
