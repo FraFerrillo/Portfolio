@@ -1,24 +1,4 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light bg-light nav border-bottom border-warning">
@@ -56,13 +36,22 @@
                       @endforeach --}}
                     <div class="dropdown">
                         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                          Dropdown link
+                          Categorie
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                          @foreach ($categories as $category)
+                          <li>
+                              <a
+                              class="dropdown-item"
+                              href="{{route('public.ads.category',[
+                                  $category->name,
+                                  $category->id
+                              ])}}"
+                              >{{$category->name}}
+                              </a>
+                          </li>
+                            @endforeach
                         </ul>
                     </div>
                     </ul>
@@ -113,5 +102,4 @@
             @yield('content')
         </main>
     </div>
-</body>
-</html>
+
