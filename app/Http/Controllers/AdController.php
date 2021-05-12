@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdRequest;
 use App\Models\Ad;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -42,16 +43,17 @@ class AdController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdRequest $request)
     {
 
         Ad::create([
             'title'=>$request->title,
             'body'=>$request->body,
-            'user_id'=>Auth::id()
+            'user_id'=>Auth::id(),
+            'category_id'=>$request->category_id
             // 'img'=>$request->file('img') ? $request->file('img')->store('public/img') : null,
         ]);
-        
+
         return redirect()->back()->with('message','Complimenti hai creato un annuncio!');
     }
 
