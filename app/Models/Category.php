@@ -10,6 +10,6 @@ class Category extends Model
     use HasFactory;
     protected $fillable = ['name'];
     public function ads(){
-        return $this->belongsToMany(Ad::class);
+        return $this->hasMany(Ad::class);
     }
 }

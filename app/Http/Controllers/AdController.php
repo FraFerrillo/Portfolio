@@ -36,12 +36,14 @@ class AdController extends Controller
      */
     public function store(Request $request)
     {
+
         Ad::create([
             'title'=>$request->title,
             'body'=>$request->body,
             'user_id'=>Auth::id()
             // 'img'=>$request->file('img') ? $request->file('img')->store('public/img') : null,
         ]);
+        dd($request->all());
         return redirect()->back()->with('message','Complimenti hai creato un annuncio!');
     }
 
