@@ -20,12 +20,16 @@ class CreateCategoriesTable extends Migration
             $table->timestamps();
         });
         $categories = [
-        'Elettronica',
+        'Sport',
         'Informatica',
         'Console e Videogiochi',
-        'Audio/Video',
+        'Cucina',
         'Fotografia',
-        'Telefonia'
+        'Telefonia',
+        'Motori',
+        'Abbigliamento',
+        'Musica',
+        'Film',
         ];
         foreach ($categories as $category){
             Category::create(['name'=>$category]);
