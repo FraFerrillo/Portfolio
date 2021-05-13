@@ -1,6 +1,11 @@
 <x-layout>
     <div class="container my-5 ">
         <div class="my-5 row">
+            @if (session('access.denied.revisor.only'))
+            <div class="alert alert-danger">
+                Accesso non consentito -solo per revisori
+            </div>
+            @endif
             <div class="col-md-8">
                 <h1 class="text-center">Benvenuti in Presto</h1>
             <div class="col-12 md-col-12 justify-content-center align-items-center d-flex flex-wrap mt-5 space-around">
@@ -17,8 +22,8 @@
                 />
                 </div>
             @endforeach
-            </div>    
+            </div>
         </div>
-        
+
     </div>
 </x-layout>

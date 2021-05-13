@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\RevisorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,9 @@ Route::post('/salva/annuncio', [AdController::class, 'store'])->name('ads.store'
 Route::get('/visualizza/annuncio/{ad}',[AdController::class,'show'])->name('ads.show');
 Route::get ('/category/{name}/{id}/ads', [PublicController::class, 'adByCategory'])->name('public.ads.category');
 
+//!REVISOR AREA
+Route::get('/revisor/home',[RevisorController::class,'index'])->name('revisor.home');
+
+Route::post('/revisor/ad/{id}/accept',[RevisorController::class,'accept'])->name('revisor.accept');
+
+Route::post('/revisor/ad/{id}/reject',[RevisorController::class,'reject'])->name('revisor.reject');
