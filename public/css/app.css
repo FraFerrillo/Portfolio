@@ -10832,3 +10832,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  background-image: url(/image/bg.jpg);
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
