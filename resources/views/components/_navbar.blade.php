@@ -58,7 +58,7 @@
                             <a class="nav-link" href="{{ route('revisor.home')}}">
                                 Revisor Home
                                 <span class="badge rounded-pill bg-warning">
-                                    {{\App\Announcement::ToBeRevisionedCount()}}
+                                    {{\App\Models\Ad::ToBeRevisionedCount()}}
                                 </span>
                             </a>
                         </li>
