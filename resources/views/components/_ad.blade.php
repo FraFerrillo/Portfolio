@@ -9,7 +9,7 @@
                   <h5>{{$price}}</h5>
                   <strong>Category: <a href="{{$href}}">{{$category}}</a></strong><i>{{$date}} - {{$user}}</i>
                 </div>
-              </div>
+            </div>
         </div>
     </div>
 </div>
