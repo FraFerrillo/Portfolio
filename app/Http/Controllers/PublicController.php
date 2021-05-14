@@ -10,13 +10,19 @@ class PublicController extends Controller
 {
     public function index()
     {
-        $ads = Ad::orderBy('created_at', 'desc')->take(5)->get();
+        $ads = Ad::where('is_accepted', true)
+        ->orderBy('created_at', 'desc')
+        ->take(6)->get();
         return view('welcome', compact('ads'));
     }
     public function adByCategory($name, $category_id)
     {
         $category = Category::find($category_id);
-        $ads = $category->ads()->orderBy('created_at', 'desc')->paginate(5);
+        $ads = $category
+        ->ads()
+        ->where('is_accepted', true)
+        ->orderBy('created_at', 'desc')
+        ->paginate(5);
         return view ('ads.show_categories', compact('category', 'ads'));
     }
 }
