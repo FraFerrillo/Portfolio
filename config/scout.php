@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'driver' => env('SCOUT_DRIVER', 'algolia'),
+    'driver' =>'tntsearch',
 
     /*
     |--------------------------------------------------------------------------
@@ -128,6 +128,18 @@ return [
     | See: https://docs.meilisearch.com/guides/advanced_guides/configuration.html
     |
     */
+    'tntsearch' => [
+        'storage'  => storage_path(), //place where the index files will be stored
+        'fuzziness' => true,
+        'fuzzy' => [
+            'prefix_length' => 2,
+            'max_expansions' => 50,
+            'distance' => 3
+        ],
+        'asYouType' => false,
+        'searchBoolean' => true,
+        'maxDocs' => 500,
+    ],
 
     'meilisearch' => [
         'host' => env('MEILISEARCH_HOST', 'http://localhost:7700'),

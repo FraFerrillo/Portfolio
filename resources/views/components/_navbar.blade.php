@@ -6,13 +6,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link active mx-5" aria-current="page" href="/">Home</a>
                 </li>
                 @auth
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('ads.create')}}">Nuovo annuncio</a>
+                <li class="nav-item ">
+                    <a class="nav-link mx-5" href="{{route('ads.create')}}">Nuovo annuncio</a>
                 </li>
                 @endauth
                 <div class="dropdown">
@@ -33,6 +33,12 @@
                         @endforeach
                     </ul>
                 </div>
+                <li class="nav-item mx-5">
+                    <form action="{{route('search')}}" method="GET" class="d-flex">
+                        <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Ricerca</button>
+                    </form>
+                </li>
             </ul>
             </li>
             </ul>
