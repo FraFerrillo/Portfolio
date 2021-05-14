@@ -69,6 +69,16 @@
                             </a>
                         </li>
                     @endif
+                    @if (Auth::user()->is_admin)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.home')}}">
+                            Admin Home
+                            <span class="badge rounded-pill bg-warning">
+                                {{\App\Models\User::ToBeRevisionedCount()}}
+                            </span>
+                        </a>
+                    </li>
+                    @endif
 
                     <div class="dropdown">
                         <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"

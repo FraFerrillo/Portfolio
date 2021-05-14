@@ -45,5 +45,10 @@ class User extends Authenticatable
         return $this->hasMany(Ad::class);
     }
 
+    static public function ToBeRevisionedCount()
+    {
+        return User::where('is_accepted', null)->count();
+    }
+
 
 }

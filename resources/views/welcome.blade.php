@@ -7,6 +7,11 @@
                     Accesso non consentito -solo per revisori
                 </div>
                 @endif
+                @if (session('access.denied.admin.only'))
+                <div class="alert alert-danger">
+                    Accesso non consentito -solo per admin
+                </div>
+                @endif
                 <h1 class="text-center">Benvenuti in Presto</h1>
                 <div class="row">
                     @foreach ($ads as $ad)

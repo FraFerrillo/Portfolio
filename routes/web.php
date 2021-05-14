@@ -37,3 +37,10 @@ Route::get('/revisor/home',[RevisorController::class,'index'])->name('revisor.ho
 Route::post('/revisor/ad/{id}/accept',[RevisorController::class,'accept'])->name('revisor.accept');
 
 Route::post('/revisor/ad/{id}/reject',[RevisorController::class,'reject'])->name('revisor.reject');
+
+//!ADMIN AREA
+Route::get('/admin/home',[AdminController::class,'index'])->name('admin.home');
+
+Route::post('/admin/user/{id}/accept',[AdminController::class,'accept'])->name('admin.accept');
+
+Route::post('/admin/user/{id}/reject',[AdminController::class,'reject'])->name('admin.reject');
