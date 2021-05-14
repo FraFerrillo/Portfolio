@@ -18,7 +18,7 @@ use App\Http\Controllers\RevisorController;
 */
 
 Route::get('/', [PublicController::class, 'index']);
-Route::get('/cerca', [PublicController::class, 'search'])->name('search');
+Route::get('/cerca', [AdController::class, 'search'])->name('search');
 
 Auth::routes();
 

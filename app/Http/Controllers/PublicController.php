@@ -15,13 +15,13 @@ class PublicController extends Controller
         ->take(6)->get();
         return view('welcome', compact('ads'));
     }
-    public function search(Request $request)
-    {
-        $q = $request->input('q');
+    // public function search(Request $request)
+    // {
+    //     $q = $request->input('q');
 
-        $ads = Ad::search($q)->get();
-        return view('ads.search_results', compact('q','ads'));
-    }
+    //     $ads = Ad::search($q)->where('is_accepted', true)->get();
+    //     return view('ads.search_results', compact('q','ads'));
+    // }
     public function adByCategory($name, $category_id)
     {
         $category = Category::find($category_id);

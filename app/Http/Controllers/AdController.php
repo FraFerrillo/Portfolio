@@ -102,4 +102,11 @@ class AdController extends Controller
     {
         //
     }
+    public function search(Request $request)
+    {
+        $q = $request->input('q');
+
+        $ads = Ad::search($q)->where('is_accepted', true)->get();
+        return view('ads.search_results', compact('q','ads'));
+    }
 }

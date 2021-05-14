@@ -17,12 +17,10 @@ class Ad extends Model
     {
         $array =[
             'id'=> $this->id,
-            'name'=> $this->name,
             'title'=> $this->title,
             'body'=> $this->body,
             'price'=> $this->price,
         ];
-
         return $array;
     }
 
