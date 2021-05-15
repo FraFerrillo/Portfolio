@@ -26,6 +26,7 @@ class AdRequest extends FormRequest
         return [
             'title' =>  'required|max:20',
             'body' => 'required|max:500',
+            'price'=> 'required'
         ];
     }
 }

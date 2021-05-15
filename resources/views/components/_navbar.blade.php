@@ -14,7 +14,11 @@
                 <li class="nav-item ">
                     <a class="nav-link mx-5" href="{{route('ads.create')}}">Nuovo annuncio</a>
                 </li>
+                <li class="nav-item ">
+                    <a class="nav-link mx-5" href="{{route('contact_us')}}">Contattaci</a>
+                </li>
                 @endauth
+
                 <div class="dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                         data-bs-toggle="dropdown" aria-expanded="false">

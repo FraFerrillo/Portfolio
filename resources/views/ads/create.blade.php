@@ -52,7 +52,9 @@
                                     <label for="img">Carica un'immagine</label>
                                     <input type="file" value="{{old('img')}}" name="img" class="form-control" id="img">
                                 </div> --}}
-                                <button type="submit" class="btn btn-success shadow">Crea</button>
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-success shadow">Crea</button>
+                                </div>
                             </form>
                         </div>
                     </div>

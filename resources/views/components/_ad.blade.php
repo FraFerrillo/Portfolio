@@ -6,7 +6,7 @@
                 <div class="card-body">
                   <h5 class="card-title"><a href="{{$link}}" class="btn btn-primary">{{$title}}</a></h5>
                   <p class="card-text">{{$body}}</p>
-                  <h5>{{$price}}</h5>
+                  <h5>{{$price}}€</h5>
                   <strong>Category: <a href="{{$href}}">{{$category}}</a></strong><i>{{$date}} - {{$user}}</i>
                 </div>
             </div>

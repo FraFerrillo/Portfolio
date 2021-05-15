@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\RevisorController;
 
@@ -38,9 +39,15 @@ Route::post('/revisor/ad/{id}/accept',[RevisorController::class,'accept'])->name
 
 Route::post('/revisor/ad/{id}/reject',[RevisorController::class,'reject'])->name('revisor.reject');
 
+//? REQUEST REVISOR MAIL
+Route::get('/contattaci', [ContactController::class,'contactUs'] )->name('contact_us');
+Route::post('/salva/contatto', [ContactController::class, 'storeContact'])->name('save_contact');
+
 //!ADMIN AREA
 Route::get('/admin/home',[AdminController::class,'index'])->name('admin.home');
 
 Route::post('/admin/user/{id}/accept',[AdminController::class,'accept'])->name('admin.accept');
 
 Route::post('/admin/user/{id}/reject',[AdminController::class,'reject'])->name('admin.reject');
+
+
