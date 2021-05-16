@@ -29,6 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/crea/annuncio', [AdController::class, 'create'])->name('ads.create');
 Route::post('/salva/annuncio', [AdController::class, 'store'])->name('ads.store');
 //? READ
+Route::get('/tutti/gli/annunci',[AdController::class,'index'])->name('ads.index');
 Route::get('/visualizza/annuncio/{ad}',[AdController::class,'show'])->name('ads.show');
 Route::get ('/category/{name}/{id}/ads', [PublicController::class, 'adByCategory'])->name('public.ads.category');
 
@@ -38,6 +39,8 @@ Route::get('/revisor/home',[RevisorController::class,'index'])->name('revisor.ho
 Route::post('/revisor/ad/{id}/accept',[RevisorController::class,'accept'])->name('revisor.accept');
 
 Route::post('/revisor/ad/{id}/reject',[RevisorController::class,'reject'])->name('revisor.reject');
+
+Route::post('/revisor/ad/{id}',[RevisorController::class,'undo'])->name('revisor.undo');
 
 //? REQUEST REVISOR MAIL
 Route::get('/contattaci', [ContactController::class,'contactUs'] )->name('contact_us');

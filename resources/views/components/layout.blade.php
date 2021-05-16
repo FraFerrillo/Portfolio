@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{$title ?? 'Home'}}</title>
     <link rel="stylesheet" href="/css/app.css">
+    <x-_links />
+
     {{$style ?? ''}}
 </head>
 <body>

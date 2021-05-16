@@ -24,7 +24,10 @@ class AdController extends Controller
      */
     public function index()
     {
-        //
+        $ads = Ad::where('is_accepted', true)
+        ->orderBy('created_at', 'desc')
+        ->simplePaginate(6);
+        return view('ads.index', compact('ads'));
     }
 
     /**

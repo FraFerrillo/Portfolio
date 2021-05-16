@@ -26,6 +26,7 @@
                             user="{{$ad->user->name}}"
                             price="{{$ad->price}}"
                             link="{{route('ads.show', compact('ad'))}}"
+                            undo=""
                             />
                         </div>
                     </div>
