@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container-fluid my-5 ">
+    <div class="container">
         <div class="my-5 row">
             <div class="col-12">
                 @if (session('access.denied.revisor.only'))
@@ -25,18 +25,18 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item">
-                            <img width="100%" height="100%" src="https://picsum.photos/seed/picsum/200/300" alt="">
+                            <img class="img-fluid" width="100%" height="100%" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
 
                             <div class="container">
                                 <div class="carousel-caption text-start">
-                                    <h1>PRESTO1</h1>
+                                    <h1 class="text-secondary">PRESTO1</h1>
                                     <p>Some representative placeholder content for the first slide of the carousel.</p>
                                     <p><a class="btn btn-lg btn-lr" href="#">Scopri di più</a></p>
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item active">
-                            <img width="100%" height="100%" src="https://picsum.photos/seed/picsum/200/300" alt="">
+                            <img class="img-fluid" width="100%" height="100%" src="https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
 
                             <div class="container">
                                 <div class="carousel-caption">
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img width="100%" height="100%" src="https://picsum.photos/seed/picsum/200/300" alt="">
+                            <img class="img-fluid" width="100%" height="100%" src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
 
                             <div class="container">
                                 <div class="carousel-caption text-end">
@@ -69,13 +69,13 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
+                <!--NUMERI/STATS SITO-->
                 <div class="container-card">
-                    <!--NUMERI/STATS SITO-->
                     <div class="container my-5 py-5">
                         <div class="row">
                             <div class="col-12 col-md-3">
                                 <div class="card text-center shadow border-0">
-                                    <div class="card-body">
+                                    <div class="card-body bg-light">
                                         <h1 class="h1card">233</h1>
                                         <p class="text-uppercase mb-1 fw-bold">Spedizioni</p>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -88,7 +88,7 @@
                             </div>
                             <div class="col-12 col-md-3">
                                 <div class="card text-center shadow border-0">
-                                    <div class="card-body">
+                                    <div class="card-body bg-light">
                                         <h1 class="h1card">53</h1>
                                         <p class="text-uppercase mb-1 fw-bold">Transazioni</p>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -101,7 +101,7 @@
                             </div>
                             <div class="col-12 col-md-3">
                                 <div class="card text-center shadow border-0">
-                                    <div class="card-body">
+                                    <div class="card-body bg-light">
                                         <h1 class="h1card">1233</h1>
                                         <p class="text-uppercase mb-1 fw-bold ">Utenti</p>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -115,7 +115,7 @@
                             </div>
                             <div class="col-12 col-md-3">
                                 <div class="card text-center shadow border-0">
-                                    <div class="card-body">
+                                    <div class="card-body bg-light">
                                         <h1 class="h1card">2000</h1>
                                         <p class="text-uppercase mb-1 fw-bold">Recensioni</p>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -128,97 +128,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- CARD -->
-                    <section class="box">
-                        <div class="">
-                            <img src="http://picsum.photos/300" alt="">
-                            <h3>Titolo Card</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio natus, voluptas praesentium
-                                at iure maiores, nam debitis enim nobis tenetur fuga totam rem molestiae quaerat quidem
-                                sapiente explicabo animi facere.</p>
-                            <a href="#">Dettagli
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="">
-                            <img src="http://picsum.photos/300" alt="">
-                            <h3>Titolo Card</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio natus, voluptas praesentium
-                                at iure maiores, nam debitis enim nobis tenetur fuga totam rem molestiae quaerat quidem
-                                sapiente explicabo animi facere.</p>
-                            <a href="#">Dettagli
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="">
-                            <img src="http://picsum.photos/300" alt="">
-                            <h3>Titolo Card</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio natus, voluptas praesentium
-                                at iure maiores, nam debitis enim nobis tenetur fuga totam rem molestiae quaerat quidem
-                                sapiente explicabo animi facere.</p>
-                            <a href="#">Dettagli
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="">
-                            <img src="http://picsum.photos/300" alt="">
-                            <h3>Titolo Card</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio natus, voluptas praesentium
-                                at iure maiores, nam debitis enim nobis tenetur fuga totam rem molestiae quaerat quidem
-                                sapiente explicabo animi facere.</p>
-                            <a href="#">Dettagli
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="">
-                            <img src="http://picsum.photos/300" alt="">
-                            <h3>Titolo Card</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio natus, voluptas praesentium
-                                at iure maiores, nam debitis enim nobis tenetur fuga totam rem molestiae quaerat quidem
-                                sapiente explicabo animi facere.</p>
-                            <a href="#">Dettagli
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="">
-                            <img src="http://picsum.photos/300" alt="">
-                            <h3>Titolo Card</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio natus, voluptas praesentium
-                                at iure maiores, nam debitis enim nobis tenetur fuga totam rem molestiae quaerat quidem
-                                sapiente explicabo animi facere.</p>
-                            <a href="#">Dettagli
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-                                </svg>
-                            </a>
-                        </div>
-                    </section>
-                </div>
-
-                <div class="row">
+                    <div class="row">
                     @foreach ($ads as $ad)
                     <div class="col-12 col-md-4 justify-content-center align-items-center d-flex flex-wrap mt-5">
                         <div class="p-2">
@@ -230,8 +140,10 @@
                         </div>
                     </div>
                     @endforeach
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </x-layout>
