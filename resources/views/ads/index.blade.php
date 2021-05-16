@@ -4,6 +4,14 @@
             @foreach ($ads as $ad)
             <div class="col-12 col-md-4 justify-content-center align-items-center d-flex flex-wrap mt-5">
                 <div class="p-2">
+                    <div class="text-center">
+                        @if(Auth::user()->is_revisor)
+                            <form action="{{route('revisor.undo', $ad->id)}}" method=POST>
+                            @csrf
+                            <button type="submit" class="btn btn-lr">Revisiona</button>
+                            </form>
+                        @endif
+                    </div>
                     <x-_ad
                     title="{{$ad->title}}"
                     body="{{$ad->body}}"
@@ -13,12 +21,12 @@
                     user="{{$ad->user->name}}"
                     price="{{$ad->price}}"
                     link="{{route('ads.show', compact('ad'))}}"
-                    undo="{{route('revisor.undo', $ad->id)}}"
                     />
                 </div>
             </div>
             @endforeach
         </div>
     </div>
-
 </x-layout>
+
+
