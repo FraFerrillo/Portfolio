@@ -8,7 +8,7 @@
                   <p class="card-text">{{$body}}</p>
                   <h5>{{$price}}€</h5>
                   <strong>Category: <a href="{{$href}}">{{$category}}</a></strong><i>{{$date}} - {{$user}}</i>
-                  @if(Auth::user()->is_revisor)
+                  @if(Auth::user())
                   <form action="{{$undo}}" method=POST>
                     @csrf
                     <button type="submit" class="btn btn-danger">Revisiona</button>
