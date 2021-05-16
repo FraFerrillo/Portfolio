@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card bg-light">
                     <div class="card-header">
                         Nuovo Annuncio
                     </div>
@@ -25,7 +25,7 @@
                             <h1 class="text-center">{{Auth::user()->name}}</h1>
                             <form action="{{route('ads.store')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <label for="category" class="col-md-4 col-form-label text-md-end">Categoria</label>
+                                <label for="category" class="col-md-4 col-form-label">Categoria</label>
                                 <div class="col-md-6">
                                     <select name="category" id="category">
                                         @foreach ($categories as $category)

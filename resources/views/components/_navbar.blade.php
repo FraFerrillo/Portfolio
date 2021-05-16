@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-1 border border-bottom shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
-            <img src="image/LOGOP (1).png" height="60px" width=60px" alt="">
+            <img src="/image/LOGOP (1).png" height="60px" width=60px" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

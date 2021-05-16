@@ -27,6 +27,11 @@
             @endforeach
         </div>
     </div>
+    <div class="row mt-4">
+        <div class="col-md-7 offset-md-5">
+            {{$ads->links()}}
+        </div>
+    </div>
 </x-layout>
 
 
