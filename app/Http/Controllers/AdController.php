@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AdRequest;
 use App\Models\Ad;
+use App\Models\AdImage;
 use App\Models\Category;
+use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 
 class AdController extends Controller
@@ -36,7 +39,10 @@ class AdController extends Controller
      */
     public function create(Request $request)
     {
-        $uniqueSecret = base_convert(sha1(uniqid(mt_rand())), 16, 36);
+        $uniqueSecret = $request->old(
+            'uniqueSecret',
+            base_convert(sha1(uniqid(mt_rand())), 16, 36)
+        );
         // $uniqueSecret = $request->input('uniqueSecret');
         return view ('ads.create', compact('uniqueSecret'));
 
@@ -52,17 +58,45 @@ class AdController extends Controller
     public function store(AdRequest $request)
     {
         // dd($request->all());
-        Ad::create([
-            'title'=>$request->title,
-            'body'=>$request->body,
-            'price'=>$request->price,
-            'user_id'=>Auth::id(),
-            'category_id'=>$request->category
-            // 'img'=>$request->file('img') ? $request->file('img')->store('public/img') : null,
-        ]);
+        // Ad::create([
+        //     'title'=>$request->title,
+        //     'body'=>$request->body,
+        //     'price'=>$request->price,
+        //     'user_id'=>Auth::id(),
+        //     'category_id'=>$request->category
+        //     // 'img'=>$request->file('img') ? $request->file('img')->store('public/img') : null,
+        // ]);
+        $a = new Ad();
+        $a->title = $request->input('title');
+        $a->body = $request->input('body');
+        $a->price = $request->input('price');
+        $a->category_id = $request->input('category');
+        $a->user_id = Auth::user()->id;
+
+        $a->save();
 
         $uniqueSecret = $request->input('uniqueSecret');
-            dd($uniqueSecret);
+
+        $images = session()->get("images.{$uniqueSecret}", []);
+        $removedImages = session()->get("removedimages.{$uniqueSecret}", []);
+
+        $images = array_diff($images, $removedImages);
+
+        foreach ($images as $image) {
+            $i = new AdImage();
+
+            $fileName = basename($image);
+            $newFileName = "/public/ads/{$a->id}/{$fileName}";
+            Storage::move($image, $newFileName);
+
+            $i->file = $newFileName;
+            $i->ad_id = $a->id;
+
+            $i->save();
+        }
+
+        File::deleteDirectory(storage_path("/app/public/temp/{$uniqueSecret}"));
+
         return redirect()->back()->with('message','Complimenti hai creato un annuncio!');
     }
 
@@ -74,7 +108,42 @@ class AdController extends Controller
 
         session()->push("images.{$uniqueSecret}", $fileName);
 
-        dd(session()->get("images.{$uniqueSecret}"));
+        return response()->json(
+        session()->get("images.{$uniqueSecret}")
+        );
+    }
+
+    public function removeImage(Request $request)
+    {
+        $uniqueSecret = $request->input('uniqueSecret');
+
+        $fileName = $request->input('id');
+
+        session()->push("removedimages.{$uniqueSecret}", $fileName);
+
+        Storage::delete($fileName);
+
+        return response()->json('ok');
+    }
+
+    public function getImages(Request $request)
+    {
+        $uniqueSecret = $request->input('uniqueSecret');
+
+        $images = session()->get("images.{$uniqueSecret}", []);
+        $removedImages = session()->get("removedimages.{$uniqueSecret}", []);
+
+        $images = array_diff($images, $removedImages);
+
+        $data = [];
+
+        foreach ($images as $image){
+            $data[] = [
+                'id' => $image,
+                'src' =>Storage::url($image)
+            ];
+        }
+        return response()->json($data);
     }
 
     /**

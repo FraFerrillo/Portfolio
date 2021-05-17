@@ -37,5 +37,10 @@ class Ad extends Model
         return Ad::where('is_accepted', null)->count();
     }
 
+    public function images()
+    {
+        return $this->hasMany(AdImage::class);
+    }
+
 }
 

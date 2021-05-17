@@ -15,7 +15,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-12">
                         <div class="card bg-light border-0 shadow mt-5">
-                            <div class="card-header"> Annuncio # {{$ad->id}}</div>
+                            <div class="card-header bg-dark text-white"> Annuncio # {{$ad->id}}</div>
 
                             <div class="card-body">
                                 <div class="row">
@@ -70,4 +70,5 @@
             </div>
         </div>
     </div>
+    <div style="margin-bottom: 200px"></div>
 </x-layout>
