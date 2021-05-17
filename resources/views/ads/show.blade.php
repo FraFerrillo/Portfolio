@@ -14,9 +14,9 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="card bg-light border-0 shadow mt-5">
                             <div class="card-header"> Annuncio # {{$ad->id}}</div>
-        
+
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-2"><h3>Utente</h3></div>
@@ -26,22 +26,22 @@
                                         {{$ad->user->email}},
                                     </div>
                                 </div>
-        
+
                                 <hr>
-        
+
                                 <div class="row">
                                     <div class="col-md-2"><h3>Titolo</h3></div>
                                     <div class="col-md-10"> {{$ad->title}}</div>
                                 </div>
-        
+
                                 <hr>
-        
+
                                 <div class="row">
                                     <div class="col-md-2"><h3>Descrizione</h3></div>
                                     <div class="col-md-10">{{$ad->body}}</div>
-        
+
                                 </div>
-        
+
                                 <div class="row">
                                     <div class="col-md-2"><h3>Immagini</h3></div>
                                     <div class="col-md-10">

@@ -6,16 +6,6 @@
             </div>
             <div class="row no-gutters">
                 @foreach($ads as $ad)
-                {{-- <div class="col-lg-6">
-                    <a class="portfolio-item" href="{{route('ads.show', compact('ad'))}}"></a>
-                    <span class="caption">
-                        <span class="caption-content">
-                            <h2>{{ $ad->title }}</h2>
-                            <p class="mb-0"> {{ $ad->body}} </p>
-
-                        </span>
-                    </span>
-                </div> --}}
                 <x-_ad
                 title="{{$ad->title}}"
                 body="{{$ad->body}}"
