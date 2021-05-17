@@ -22,6 +22,9 @@ use App\Http\Controllers\RevisorController;
 Route::get('/', [PublicController::class, 'index']);
 Route::get('/cerca', [AdController::class, 'search'])->name('search');
 
+
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -29,6 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //? Create
 Route::get('/crea/annuncio', [AdController::class, 'create'])->name('ads.create');
 Route::post('/salva/annuncio', [AdController::class, 'store'])->name('ads.store');
+Route::post('/ad/images/upload', [AdController::class, 'uploadImage'])->name('ads.images.upload');
 //? READ
 Route::get('/tutti/gli/annunci',[AdController::class,'index'])->name('ads.index');
 Route::get('/visualizza/annuncio/{ad}',[AdController::class,'show'])->name('ads.show');

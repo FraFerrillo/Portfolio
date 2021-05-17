@@ -29,15 +29,17 @@ class AdController extends Controller
         ->simplePaginate(6);
         return view('ads.index', compact('ads'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view ('ads.create');
+        $uniqueSecret = base_convert(sha1(uniqid(mt_rand())), 16, 36);
+        // $uniqueSecret = $request->input('uniqueSecret');
+        return view ('ads.create', compact('uniqueSecret'));
+
     }
 
     /**
@@ -46,6 +48,7 @@ class AdController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(AdRequest $request)
     {
         // dd($request->all());
@@ -58,7 +61,20 @@ class AdController extends Controller
             // 'img'=>$request->file('img') ? $request->file('img')->store('public/img') : null,
         ]);
 
+        $uniqueSecret = $request->input('uniqueSecret');
+            dd($uniqueSecret);
         return redirect()->back()->with('message','Complimenti hai creato un annuncio!');
+    }
+
+    public function uploadImage(Request $request)
+    {
+        $uniqueSecret = $request->input('uniqueSecret');
+
+        $fileName = $request->file('file')->store("public/temp/{$uniqueSecret}");
+
+        session()->push("images.{$uniqueSecret}", $fileName);
+
+        dd(session()->get("images.{$uniqueSecret}"));
     }
 
     /**

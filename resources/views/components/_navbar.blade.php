@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-1 border border-bottom shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-1 border border-bottom shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <img src="/image/LOGOP (1).png" height="60px" width=60px" alt="">
@@ -69,7 +69,7 @@
                 @guest
                 @if (Route::has('login'))
                 <li class="nav-item">
-                    <button class="btn-lr mx-2 border-0 shadow">
+                    <button class="btn-lr fw-bold mx-2 border-0 shadow">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </button>
                 </li>
@@ -78,7 +78,7 @@
 
                 @if (Route::has('register'))
                 <li class="nav-item">
-                    <button class="btn-lr mx-2 border-0 shadow">
+                    <button class="btn-lr fw-bold mx-2 border-0 shadow">
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </button>
                 </li>
@@ -88,7 +88,7 @@
                 @if (Auth::user()->is_revisor)
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('revisor.home')}}">
-                        Revisor Home
+                        Revisiona
                         <span class="badge rounded-pill bg-warning">
                             {{\App\Models\Ad::ToBeRevisionedCount()}}
                         </span>

@@ -80,9 +80,10 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-               <h3>Non ci sono annunci da revisionare</h3>
+               <h3 class="text-center pt-3">Non ci sono annunci da revisionare</h3>
             </div>
         </div>
     </div>
     @endif
+    <div style="margin-top : 700px"></div>
 </x-layout>

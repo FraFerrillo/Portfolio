@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card bg-light border-0 shadow mt-5">
+                <div class="card bg-light border-0 shadow my-5">
                     <div class="card-header">
                         Diventa Revisore
                     </div>
@@ -40,7 +40,7 @@
                                     class="form-control">{{old('body')}}</textarea>
                                 </div>
                                 <div class="text-end">
-                                    <button type="submit" class="btn btn-success shadow">Invia</button>
+                                    <button type="submit" class="btn btn-lr shadow">Invia</button>
                                 </div>
                             </form>
                         </div>
@@ -50,4 +50,5 @@
 
         </div>
     </div>
+    <div style="margin-top : 200px"></div>
 </x-layout>
