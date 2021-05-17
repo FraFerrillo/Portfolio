@@ -5,7 +5,7 @@
             <div class="col-12 col-md-4 justify-content-center align-items-center d-flex flex-wrap mt-5">
                 <div class="p-2">
                     <div class="text-center">
-                        @if(Auth::user()->is_revisor)
+                        @if(Auth::user())
                             <form action="{{route('revisor.undo', $ad->id)}}" method=POST>
                             @csrf
                             <button type="submit" class="btn btn-lr">Revisiona</button>

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12">
-                <div class="card">
+                <div class="card bg-light border-0 shadow mt-5">
                     <div class="card-header"> Annuncio # {{$ad->id}}</div>
 
                     <div class="card-body">
