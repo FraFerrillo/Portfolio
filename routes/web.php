@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\RevisorController;
@@ -53,4 +54,4 @@ Route::post('/admin/user/{id}/accept',[AdminController::class,'accept'])->name('
 
 Route::post('/admin/user/{id}/reject',[AdminController::class,'reject'])->name('admin.reject');
 
-
+// Route::post('/rendi/revisore/{user}',[AdminController::class,'makeRevisor'])->middleware('auth.admin')->name('make_revisor');

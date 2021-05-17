@@ -29,7 +29,7 @@
 
                             <div class="container">
                                 <div class="carousel-caption text-start">
-                                    <h1 class="text-secondary">PRESTO1</h1>
+                                    <h1 class="text-white">Abbigliamento</h1>
                                     <p>Some representative placeholder content for the first slide of the carousel.</p>
                                     <p><a class="btn btn-lg btn-lr" href="#">Scopri di più</a></p>
                                 </div>
@@ -40,7 +40,7 @@
 
                             <div class="container">
                                 <div class="carousel-caption">
-                                    <h1>PRESTO2</h1>
+                                    <h1 class="text-white">Sport</h1>
                                     <p>Some representative placeholder content for the second slide of the carousel.</p>
                                     <p><a class="btn btn-lg btn-lr" href="#">Scopri di più</a></p>
                                 </div>
@@ -51,7 +51,7 @@
 
                             <div class="container">
                                 <div class="carousel-caption text-end">
-                                    <h1>PRESTO3</h1>
+                                    <h1 class="text-white">Informatica</h1>
                                     <p>Some representative placeholder content for the third slide of this carousel.</p>
                                     <p><a class="btn btn-lg btn-lr" href="#">Scopri di più</a></p>
                                 </div>
