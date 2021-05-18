@@ -11,7 +11,7 @@ class Ad extends Model
 {
     use Searchable;
     use HasFactory;
-    protected $fillable = ['title','body','user_id','category_id','price','is_accepted'];
+    protected $fillable = ['title','body','user_id','category_id','price','is_accepted', 'ad_image_id'];
 
     public function toSearchableArray()
     {
