@@ -14,7 +14,7 @@
                         </div>
                         @if ($ad->images->count())
                         <x-_ad
-                            image="{{$ad->images->getUrl(300, 150)}}"
+                            image="{{$ad->images->first()->getUrl(300, 150)}}"
                             title="{{$ad->title}}"
                             body="{{$ad->body}}"
                             href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
@@ -24,7 +24,7 @@
                             price="{{$ad->price}}"
                             link="{{route('ads.show', compact('ad'))}}"
                         />
-                        @else                        
+                        @else
                         <x-_ad
                         image="https://via.placeholder.com/150/300"
                         title="{{$ad->title}}"

@@ -38,7 +38,7 @@
                                 @foreach ($ad->images as $image)
                                     <div class="row mb-2">
                                         <div class="col-md-4">
-                                            <img src="{{Storage::url($image->file)}}" class="rounded" alt="">
+                                            <img src="{{$ad->images->first()->getUrl(300, 150)}}" class="rounded" alt="">
                                         </div>
                                         <div class="col-md-8">
                                             {{$image->id}} <br>

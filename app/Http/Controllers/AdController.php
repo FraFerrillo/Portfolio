@@ -28,7 +28,7 @@ class AdController extends Controller
      */
     public function index()
     {
-        
+
         $ads = Ad::where('is_accepted', true)
         ->orderBy('created_at', 'desc')
         ->simplePaginate(6);
@@ -76,7 +76,7 @@ class AdController extends Controller
         $a->price = $request->input('price');
         $a->category_id = $request->input('category');
         $a->user_id = Auth::user()->id;
-        
+
 
         $a->save();
 
@@ -100,6 +100,12 @@ class AdController extends Controller
                 150
             ));
 
+            dispatch(new ResizeImage(
+                $newFileName,
+                400,
+                300
+            ));
+
             $i->file = $newFileName;
             $i->ad_id = $a->id;
 
@@ -118,13 +124,13 @@ class AdController extends Controller
         $fileName = $request->file('file')->store("public/temp/{$uniqueSecret}");
 
         dispatch(new ResizeImage(
-            $FileName,
-            80,
-            80
+            $fileName,
+            120,
+            120
         ));
 
         session()->push("images.{$uniqueSecret}", $fileName);
-        
+
         return response()->json(
             [
                 'id'=>$fileName
@@ -159,7 +165,7 @@ class AdController extends Controller
         foreach ($images as $image){
             $data[] = [
                 'id' => $image,
-                'src' =>AdImage::getUrlByFilePath($image, 80, 80)
+                'src' =>AdImage::getUrlByFilePath($image, 120, 120)
             ];
         }
         return response()->json($data);
