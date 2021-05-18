@@ -1,5 +1,3 @@
-const { initial } = require("lodash");
-
 $(function(){
     // document ready !!!
     if($("#drophere").length > 0 ){
@@ -15,7 +13,7 @@ $(function(){
                 uniqueSecret: uniqueSecret
             },
 
-            addRemoveLink: true,
+            addRemoveLinks: true,
 
 
             init:function(){

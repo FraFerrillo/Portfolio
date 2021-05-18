@@ -7,6 +7,9 @@
             <div class="row no-gutters">
                 @foreach($ads as $ad)
                 <x-_ad
+                @foreach ($ad->images as $image)
+                image="{{Storage::url($image->file)}}"
+                @endforeach
                 title="{{$ad->title}}"
                 body="{{$ad->body}}"
                 href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"

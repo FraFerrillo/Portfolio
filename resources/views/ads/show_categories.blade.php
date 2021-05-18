@@ -9,6 +9,9 @@
                 @foreach ($ads as $ad)
                 <div class="col-md-4 justify-content-center align-items-center d-flex flex-wrap mt-5">
                 <x-_ad
+                @foreach ($ad->images as $image)
+                image="{{Storage::url($image->file)}}"
+                @endforeach
                 title="{{$ad->title}}"
                 body="{{$ad->body}}"
                 href="{{route('public.ads.category',[$category->name,$category->id])}}"

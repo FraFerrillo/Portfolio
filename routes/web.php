@@ -35,7 +35,7 @@ Route::post('/salva/annuncio', [AdController::class, 'store'])->name('ads.store'
 //*IMMAGINI
 Route::post('/ad/images/upload', [AdController::class, 'uploadImage'])->name('ads.images.upload');
 Route::delete('/ad/images/remove', [AdController::class, 'removeImage'])->name('ads.images.remove');
-Route::get('/annuncio/immagini', [AdController::class, 'getImages'])->name('ads.images');
+Route::get('/ad/images', [AdController::class, 'getImages'])->name('ads.images');
 //? READ
 Route::get('/tutti/gli/annunci',[AdController::class,'index'])->name('ads.index');
 Route::get('/visualizza/annuncio/{ad}',[AdController::class,'show'])->name('ads.show');

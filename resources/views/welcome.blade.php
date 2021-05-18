@@ -134,13 +134,17 @@
                         <div class="p-2">
                             <x-_ad
                                 @foreach ($ad->images as $image)
-                                    image="{{Storage::url($image->file)}}"
+                                image="{{Storage::url($image->file)}}"
                                 @endforeach
-                                title="{{$ad->title}}" body="{{$ad->body}}"
+                                title="{{$ad->title}}"
+                                body="{{$ad->body}}"
                                 href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
-                                category="{{$ad->category->name}}" date="{{$ad->created_at->format('d/m/Y')}}"
-                                user="{{$ad->user->name}}" price="{{$ad->price}}"
-                                link="{{route('ads.show', compact('ad'))}}" undo="" />
+                                category="{{$ad->category->name}}"
+                                date="{{$ad->created_at->format('d/m/Y')}}"
+                                user="{{$ad->user->name}}"
+                                price="{{$ad->price}}"
+                                link="{{route('ads.show', compact('ad'))}}"
+                                undo="" />
                         </div>
                     </div>
                     @endforeach

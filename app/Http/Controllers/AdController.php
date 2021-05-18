@@ -6,9 +6,9 @@ use App\Http\Requests\AdRequest;
 use App\Models\Ad;
 use App\Models\AdImage;
 use App\Models\Category;
-use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 
@@ -95,7 +95,7 @@ class AdController extends Controller
             $i->save();
         }
 
-        Storage::deleteDirectory(storage_path("/app/public/temp/{$uniqueSecret}"));
+        File::deleteDirectory(storage_path("/app/public/temp/{$uniqueSecret}"));
 
         return redirect()->back()->with('message','Complimenti hai creato un annuncio!');
     }
