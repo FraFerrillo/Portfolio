@@ -12,7 +12,7 @@
                     Accesso non consentito -solo per admin
                 </div>
                 @endif
-                <h1 class="text-center fw-bold text-uppercase text-black ">Benvenuti in Presto</h1>
+                <h1 class="text-center fw-bold text-uppercase text-black ">{{ __('ui.welcome')}}</h1>
                 <!-- MAIN-CAROUSEL -->
                 <div id="myCarousel" class="carousel slide pointer-event" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -132,10 +132,9 @@
                     @foreach ($ads as $ad)
                     <div class="col-12 col-md-4 justify-content-center align-items-center d-flex flex-wrap mt-5">
                         <div class="p-2">
+                            @if ($ad->images->count())
                             <x-_ad
-                                @foreach ($ad->images as $image)
-                                image="{{Storage::url($image->file)}}"
-                                @endforeach
+                                image="{{$ad->images->first()->getUrl(300, 150)}}"
                                 title="{{$ad->title}}"
                                 body="{{$ad->body}}"
                                 href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
@@ -144,7 +143,20 @@
                                 user="{{$ad->user->name}}"
                                 price="{{$ad->price}}"
                                 link="{{route('ads.show', compact('ad'))}}"
-                                undo="" />
+                            />
+                            @else
+                            <x-_ad
+                            image="https://via.placeholder.com/150/300"
+                            title="{{$ad->title}}"
+                            body="{{$ad->body}}"
+                            href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
+                            category="{{$ad->category->name}}"
+                            date="{{$ad->created_at->format('d/m/Y')}}"
+                            user="{{$ad->user->name}}"
+                            price="{{$ad->price}}"
+                            link="{{route('ads.show', compact('ad'))}}"
+                            />
+                            @endif
                         </div>
                     </div>
                     @endforeach

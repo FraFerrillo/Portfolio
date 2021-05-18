@@ -26,6 +26,12 @@ class PublicController extends Controller
         ->paginate(5);
         return view ('ads.show_categories', compact('category', 'ads'));
     }
+
+    public function locale($locale)
+    {
+        session()->put('locale', $locale);
+        return redirect()->back();
+    }
 }
 
 

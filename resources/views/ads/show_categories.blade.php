@@ -9,19 +9,31 @@
                 @foreach ($ads as $ad)
                 <div class="col-md-4 justify-content-center align-items-center d-flex flex-wrap mt-5">
                 <x-_ad
-                @foreach ($ad->images as $image)
-                image="{{Storage::url($image->file)}}"
-                @endforeach
+                @if ($ad->images->count())
+                <x-_ad
+                    image="{{$ad->images->first()->getUrl(300, 150)}}"
+                    title="{{$ad->title}}"
+                    body="{{$ad->body}}"
+                    href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
+                    category="{{$ad->category->name}}"
+                    date="{{$ad->created_at->format('d/m/Y')}}"
+                    user="{{$ad->user->name}}"
+                    price="{{$ad->price}}"
+                    link="{{route('ads.show', compact('ad'))}}"
+                />
+                @else
+                <x-_ad
+                image="https://via.placeholder.com/150/300"
                 title="{{$ad->title}}"
                 body="{{$ad->body}}"
-                href="{{route('public.ads.category',[$category->name,$category->id])}}"
-                category="{{$category->name}}"
+                href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
+                category="{{$ad->category->name}}"
                 date="{{$ad->created_at->format('d/m/Y')}}"
                 user="{{$ad->user->name}}"
                 price="{{$ad->price}}"
                 link="{{route('ads.show', compact('ad'))}}"
                 />
-                </div>
+                @endif
                 @endforeach
             </div>
         <div class="row mt-4">
@@ -30,6 +42,5 @@
             </div>
         </div>
     </div>
-    <div style="margin-top : 180px"></div>
 </x-layout>
 

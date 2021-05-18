@@ -9,11 +9,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                <li class="nav-item mx-3">
                     <a class="nav-link active hoverborder" aria-current="page" href="{{route('ads.index')}}">Tutti gli
                         annunci</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mx-3">
                     @auth
                     <a class="nav-link active hoverborder" aria-current="page" href="{{route('ads.create')}}">Crea
                         annuncio</a>
@@ -21,6 +21,15 @@
                     <a class="nav-link active hoverborder" aria-current="page" href="{{ route('register') }}">Crea
                         annuncio</a>
                     @endauth
+                </li>
+                <li class="nav-item">
+                    <x-_locale lang="it" nation="it" />
+                </li>
+                <li class="nav-item">
+                    <x-_locale lang="en" nation="gb" />
+                </li>
+                <li class="nav-item">
+                    <x-_locale lang="es" nation="es" />
                 </li>
             </ul>
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">

@@ -6,10 +6,21 @@
             </div>
             <div class="row no-gutters">
                 @foreach($ads as $ad)
+                @if ($ad->images->count())
                 <x-_ad
-                @foreach ($ad->images as $image)
-                image="{{Storage::url($image->file)}}"
-                @endforeach
+                    image="{{$ad->images->first()->getUrl(300, 150)}}"
+                    title="{{$ad->title}}"
+                    body="{{$ad->body}}"
+                    href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
+                    category="{{$ad->category->name}}"
+                    date="{{$ad->created_at->format('d/m/Y')}}"
+                    user="{{$ad->user->name}}"
+                    price="{{$ad->price}}"
+                    link="{{route('ads.show', compact('ad'))}}"
+                />
+                @else
+                <x-_ad
+                image="https://via.placeholder.com/150/300"
                 title="{{$ad->title}}"
                 body="{{$ad->body}}"
                 href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
@@ -18,13 +29,10 @@
                 user="{{$ad->user->name}}"
                 price="{{$ad->price}}"
                 link="{{route('ads.show', compact('ad'))}}"
-               />
+                />
+                @endif
                 @endforeach
-
-
             </div>
         </div>
-
-
     </section>
 </x-layout>
