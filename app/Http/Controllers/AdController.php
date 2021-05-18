@@ -95,7 +95,7 @@ class AdController extends Controller
             $i->save();
         }
 
-        File::deleteDirectory(storage_path("/app/public/temp/{$uniqueSecret}"));
+        Storage::deleteDirectory(storage_path("/app/public/temp/{$uniqueSecret}"));
 
         return redirect()->back()->with('message','Complimenti hai creato un annuncio!');
     }
