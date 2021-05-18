@@ -31,7 +31,7 @@ class AdController extends Controller
         $ads = Ad::where('is_accepted', true)
         ->orderBy('created_at', 'desc')
         ->simplePaginate(6);
-        dd($ads->all());
+        // dd($ads->all());
         return view('ads.index', compact('ads'));
     }
     /**
@@ -57,7 +57,7 @@ class AdController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(AdRequest $request)
+    public function store(Request $request)
     {
         // dd($request->all());
         // Ad::create([
@@ -116,7 +116,7 @@ class AdController extends Controller
         $fileName = $request->file('file')->store("public/temp/{$uniqueSecret}");
 
         session()->push("images.{$uniqueSecret}", $fileName);
-
+        
         return response()->json(
             [
                 'id'=>$fileName

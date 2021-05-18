@@ -8,13 +8,7 @@
                     </div>
                     <div class="card-body">
                         <h3>DEBUG:: SECRET {{$uniqueSecret}}</h3>
-                        <form action="{{ route('ads.store')}}" method="POST">
-                        @csrf
-                        <input
-                            type="hidden"
-                            name="uniqueSecret"
-                            value="{{$uniqueSecret}}">
-                        </form>
+                        
                         @if (session('message'))
                         <div class="alert alert-success my-3">
                             {{session('message')}}
@@ -33,6 +27,10 @@
                             <h1 class="text-center">{{Auth::user()->name}}</h1>
                             <form action="{{route('ads.store')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                <input
+                                    type="hidden"
+                                    name="uniqueSecret"
+                                    value="{{$uniqueSecret}}">
                                 <label for="category" class="col-md-4 col-form-label">Categoria</label>
                                 <div class="col-md-6">
                                     <select name="category" id="category" class="border-0 mb-3">
