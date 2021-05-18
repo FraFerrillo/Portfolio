@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card bg-light border-0 shadow my-5">
-                    <div class="card-header">
+                    <div class="card-header bg-dark text-white">
                         Nuovo Annuncio
                     </div>
                     <div class="card-body">
