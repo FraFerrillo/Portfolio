@@ -16,23 +16,23 @@ class AdImage extends Model
         return $this->belongsTo(Ad::class);
     }
 
-    static public function getUrlByFilePath($filePath, $w = null, $h = null)
+    static public function getUrlByFilePath($filePath, $width = null, $height = null)
     {
-            if (!$w && !$h) {
-                return Storage::url($filePath);
-            }
+        if(!$width && !$height)
+        {
+            return Storage::url($filePath);
+        }
 
-            $path = dirname($filePath);
-            $filename = basename($filePath);
+        $path = dirname($filePath);
+        $filename = basename($filePath);
+        $file = "{$path}/crop{$width}x{$height}_{$filename}";
 
-            $file = "{$path}/crop{$w}x{$h}_{$filename}";
-
-            return Storage::url($file);
-
+        return Storage::url($file);
     }
 
-    public function getUrl($w = null, $h = null)
+    public function getUrl($width = null, $height = null)
     {
-        return AdImage::getUrlByFilePath($this->file, $w, $h); 
+        return AdImage::getUrlByFilePath($this->file, $width, $height);
     }
+
 }
