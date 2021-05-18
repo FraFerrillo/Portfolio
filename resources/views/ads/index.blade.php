@@ -12,10 +12,9 @@
                                 </form>
                             @endif
                         </div>
+                        @if ($ad->images->count())
                         <x-_ad
-                            @foreach ($ad->ad_images as $image)
-                            image="{{Storage::url($image->file)}}"
-                            @endforeach
+                            image="{{$ad->images->getUrl(300, 150)}}"
                             title="{{$ad->title}}"
                             body="{{$ad->body}}"
                             href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
@@ -25,6 +24,19 @@
                             price="{{$ad->price}}"
                             link="{{route('ads.show', compact('ad'))}}"
                         />
+                        @else                        
+                        <x-_ad
+                        image="https://via.placeholder.com/150/300"
+                        title="{{$ad->title}}"
+                        body="{{$ad->body}}"
+                        href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
+                        category="{{$ad->category->name}}"
+                        date="{{$ad->created_at->format('d/m/Y')}}"
+                        user="{{$ad->user->name}}"
+                        price="{{$ad->price}}"
+                        link="{{route('ads.show', compact('ad'))}}"
+                        />
+                        @endif
                     </div>
                 </div>
             @endforeach

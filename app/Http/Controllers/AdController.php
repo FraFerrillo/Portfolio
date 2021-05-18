@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AdRequest;
 use App\Models\Ad;
 use App\Models\AdImage;
 use App\Models\Category;
+use App\Jobs\ResizeImage;
 use Illuminate\Http\Request;
+use App\Http\Requests\AdRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 
 class AdController extends Controller
 {
@@ -32,6 +33,7 @@ class AdController extends Controller
         ->orderBy('created_at', 'desc')
         ->simplePaginate(6);
         // dd($ads->all());
+        // $ad_images = AdImage::all();
         return view('ads.index', compact('ads'));
     }
     /**
@@ -57,7 +59,7 @@ class AdController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(AdRequest $request)
     {
         // dd($request->all());
         // Ad::create([
@@ -89,14 +91,14 @@ class AdController extends Controller
             $i = new AdImage();
 
             $fileName = basename($image);
-            $newFileName = "/public/ads/{$a->id}/{$fileName}";
+            $newFileName = "public/ads/{$a->id}/{$fileName}";
             Storage::move($image, $newFileName);
 
-            // dispatch(new ResizeImage(
-            //     $newFileName,
-            //     300,
-            //     300
-            // ));
+            dispatch(new ResizeImage(
+                $newFileName,
+                300,
+                150
+            ));
 
             $i->file = $newFileName;
             $i->ad_id = $a->id;
@@ -114,6 +116,12 @@ class AdController extends Controller
         $uniqueSecret = $request->input('uniqueSecret');
 
         $fileName = $request->file('file')->store("public/temp/{$uniqueSecret}");
+
+        dispatch(new ResizeImage(
+            $FileName,
+            80,
+            80
+        ));
 
         session()->push("images.{$uniqueSecret}", $fileName);
         
@@ -151,7 +159,7 @@ class AdController extends Controller
         foreach ($images as $image){
             $data[] = [
                 'id' => $image,
-                'src' =>Storage::url($image)
+                'src' =>AdImage::getUrlByFilePath($image, 80, 80)
             ];
         }
         return response()->json($data);
