@@ -37,7 +37,7 @@
                             <div class="col-md-10">
                                 @if ($ad->images->count())
                                 <x-_ad
-                                    image="{{$ad->images->first()->getUrl(300, 150)}}"
+                                    image="{{$ad->images->first()->getUrl(200, 200)}}"
                                     title="{{$ad->title}}"
                                     body="{{$ad->body}}"
                                     href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"

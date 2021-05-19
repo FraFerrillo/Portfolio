@@ -28,7 +28,7 @@ class AdController extends Controller
      */
     public function index()
     {
-        
+
         $ads = Ad::where('is_accepted', true)
         ->orderBy('created_at', 'desc')
         ->simplePaginate(6);
@@ -76,7 +76,7 @@ class AdController extends Controller
         $a->price = $request->input('price');
         $a->category_id = $request->input('category');
         $a->user_id = Auth::user()->id;
-        
+
 
         $a->save();
 
@@ -96,8 +96,8 @@ class AdController extends Controller
 
             dispatch(new ResizeImage(
                 $newFileName,
-                300,
-                150
+                200,
+                200
             ));
                       dispatch(new ResizeImage(
                 $newFileName,
@@ -129,7 +129,7 @@ class AdController extends Controller
         ));
 
         session()->push("images.{$uniqueSecret}", $fileName);
-        
+
         return response()->json(
             [
                 'id'=>$fileName
