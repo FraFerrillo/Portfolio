@@ -3,12 +3,14 @@
 namespace App\Jobs;
 
 use App\Models\AdImage;
+use Google\Cloud\Vision\V1\ImageAnnotatorClient;
+use Google\Cloud\Core\ServiceBuilder;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 class GoogleVisionLabelImage implements ShouldQueue
 {
@@ -34,8 +36,8 @@ class GoogleVisionLabelImage implements ShouldQueue
     public function handle()
     {
         $i = AdImage::find($this->ad_image_id);
-
-        if(!$i){return; }
+        if(!$i){return; 
+        }
 
         $image = file_get_contents(storage_path('/app/' . $i->file));
 
@@ -56,8 +58,8 @@ class GoogleVisionLabelImage implements ShouldQueue
             $result[] = $label->getDescription();
         }
 
-        echo json_encode($result);
-        $i->labels = json_encode($result);
+        // echo json_encode($result);
+        $i->labels = $result;
         $i->save();
 
         }
