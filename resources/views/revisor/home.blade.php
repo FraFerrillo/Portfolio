@@ -35,31 +35,24 @@
                         <div class="row">
                             <div class="col-md-2"><h3>Immagini</h3></div>
                             <div class="col-md-10">
-                                @if ($ad->images->count())
-                                <x-_ad
-                                    image="{{$ad->images->first()->getUrl(200, 200)}}"
-                                    title="{{$ad->title}}"
-                                    body="{{$ad->body}}"
-                                    href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
-                                    category="{{$ad->category->name}}"
-                                    date="{{$ad->created_at->format('d/m/Y')}}"
-                                    user="{{$ad->user->name}}"
-                                    price="{{$ad->price}}"
-                                    link="{{route('ads.show', compact('ad'))}}"
-                                />
-                                @else
-                                <x-_ad
-                                image="https://via.placeholder.com/150/300"
-                                title="{{$ad->title}}"
-                                body="{{$ad->body}}"
-                                href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
-                                category="{{$ad->category->name}}"
-                                date="{{$ad->created_at->format('d/m/Y')}}"
-                                user="{{$ad->user->name}}"
-                                price="{{$ad->price}}"
-                                link="{{route('ads.show', compact('ad'))}}"
-                                />
-                                @endif
+                                @foreach ($ad->images as $image)
+                                <div class="row mb-2">
+                                    <div class="col-md-4">
+                                        <div><img src="{{$image->getUrl(200, 200)}}" class="card-img-top" alt="...">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        Adult: {{$image->adult}} <br>
+                                        Spoof: {{$image->spoof}} <br>
+                                        Medical: {{$image->medical}} <br>
+                                        Violence: {{$image->violence}} <br>
+                                        Racy: {{$image->racy}} <br>
+                                        {{$image->id}} <br>
+                                        {{$image->file}} <br>
+                                        {{Storage::url($image->file)}} <br>
+                                    </div>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
 

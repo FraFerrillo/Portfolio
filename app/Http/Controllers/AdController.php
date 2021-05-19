@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Jobs\ResizeImage;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdRequest;
+use App\Jobs\GoogleVisionSafeSearchImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
@@ -105,10 +106,13 @@ class AdController extends Controller
                 300
             ));
 
+
+
             $i->file = $newFileName;
             $i->ad_id = $a->id;
 
             $i->save();
+            dispatch(new GoogleVisionSafeSearchImage($i->id));
         }
 
         File::deleteDirectory(storage_path("/app/public/temp/{$uniqueSecret}"));
