@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'welcome' => 'Benvenuti in presto.it !',
+    'welcome' => 'Benvenuti in presto.it',
 ];

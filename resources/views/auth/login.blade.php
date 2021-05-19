@@ -70,5 +70,4 @@
         </div>
     </div>
 </div>
-<div style="margin-top : 400px"></div>
 @endsection
