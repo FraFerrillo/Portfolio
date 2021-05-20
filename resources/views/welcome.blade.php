@@ -18,7 +18,7 @@
                       <span class="letters">{{ __('ui.welcome')}}</span>
                     </span>
                   </h1>
-                  
+
                 <!-- MAIN-CAROUSEL -->
                 <div id="myCarousel" class="carousel slide pointer-event" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -35,7 +35,7 @@
 
                             <div class="container">
                                 <div class="carousel-caption text-start">
-                                    <h1 class="text-white">Abbigliamento</h1>
+                                    <h1 class="text-white text-wrapper">Abbigliamento</h1>
                                     <p>Some representative placeholder content for the first slide of the carousel.</p>
                                     <p><a class="btn btn-lg btn-lr" href="#">Scopri di più</a></p>
                                 </div>
@@ -46,7 +46,7 @@
 
                             <div class="container">
                                 <div class="carousel-caption">
-                                    <h1 class="text-white">Sport</h1>
+                                    <h1 class="text-white text-wrapper">Sport</h1>
                                     <p>Some representative placeholder content for the second slide of the carousel.</p>
                                     <p><a class="btn btn-lg btn-lr" href="#">Scopri di più</a></p>
                                 </div>
@@ -56,8 +56,8 @@
                             <img class="img-fluid" width="100%" height="100%" src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
 
                             <div class="container">
-                                <div class="carousel-caption text-end">
-                                    <h1 class="text-white">Informatica</h1>
+                                <div class="carousel-caption text-end ">
+                                    <h1 class="text-white text-wrapper">Informatica</h1>
                                     <p>Some representative placeholder content for the third slide of this carousel.</p>
                                     <p><a class="btn btn-lg btn-lr" href="#">Scopri di più</a></p>
                                 </div>
@@ -137,15 +137,15 @@
                     <div class="row">
                         @foreach ($ads as $ad)
                         <div class="col-12 col-md-4 d-flex flex-wrap justify-content-center mt-5">
-                            
-        
+
+
                                 <div class="card my-3 shadow border-0 text-center" style="width: 20rem;">
                                     <div id="owl-demo" class="owl-carousel owl-theme bg-light">
                                         @if ($ad->images->count())
                                             @foreach ($ad->images as $image)
                                                 <div class="item"><img src="{{$image->getUrl(200, 200)}}" alt="Card-image"></div>
                                             @endforeach
-                                        @else 
+                                        @else
                                             <div class="item"><img class="card-img-top" src="\image\LOGOP (1).png" alt="Card-image"></div>
                                         @endif
                                     </div>
@@ -154,27 +154,19 @@
                                         <h5 class="card-text text-start">{{Illuminate\Support\Str::limit($ad->body, 25, $end='...')}}</h5>
                                         <br>
                                         <h6 class="text-start">
-                                                <strong>Categoria: 
+                                                <strong>Categoria:
                                                 <a class="text-decoration-none" href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}">{{$ad->category->name}}</a></strong>
-                                            <br> 
-                                                <strong>Autore: </strong>{{$ad->user->name}}   
-                                            <br> 
+                                            <br>
+                                                <strong>Autore: </strong>{{$ad->user->name}}
+                                            <br>
                                                 <strong>Creato il: </strong>{{$ad->created_at->format('d/m/Y')}}
                                         </h6>
                                         <hr>
                                         <h5 class="text-start">Prezzo: <strong class="c-ter">{{$ad->price}}€</strong></h5>
                                     </div>
                                     {{-- TASTO REVISORE --}}
-                                    @if(Auth::user())
-                                        <div class="card-footer bg-light text-center">
-                                            <form action="{{route('revisor.undo', $ad->id)}}" method=POST>
-                                            @csrf
-                                            <button type="submit" class="btn btn-lr text-center">Revisiona</button>
-                                            </form>
-                                        </div>
-                                    @endif
                                 </div>
-                            
+
                         </div>
                     @endforeach
                     </div>
