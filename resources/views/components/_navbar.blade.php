@@ -13,7 +13,7 @@
                     <a class="nav-link active hoverborder" aria-current="page" href="{{route('ads.index')}}">Tutti gli
                         annunci</a>
                 </li>
-                <li class="nav-item mx-1">
+                <li class="nav-item mx-3">
                     @auth
                     <a class="nav-link active hoverborder" aria-current="page" href="{{route('ads.create')}}">Crea
                         annuncio</a>
@@ -67,12 +67,12 @@
                     </form>
                 </div>
                 @auth
-                <li class="nav-item">
+                <li class="nav-item mx-2">
                     <a class="nav-link active hoverborder" aria-current="page" href="{{route('contact_us')}}">Diventa
                         Revisore</a>
                 </li>
                 @endauth
-                <li class="nav-item">
+                <li class="nav-item mx-3">
                         <a class="nav-link active hoverborder" aria-current="page" href="{{route('guest_contact')}}">Contattaci</a>
                 </li>
             </ul>
@@ -98,25 +98,25 @@
                 @else
 
                 @if (Auth::user()->is_revisor)
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('revisor.home')}}">
+                <li class="nav-item mx-1">
+                    <a class="nav-link text-dark" href="{{ route('revisor.home')}}">
                         Revisiona
-                        <span class="badge rounded-pill bg-warning">
+                        <span class="badge rounded-pill bg-warning text-dark">
                             {{\App\Models\Ad::ToBeRevisionedCount()}}
                         </span>
                     </a>
                 </li>
                 @endif
-                @if (Auth::user()->is_admin)
+                {{-- @if (Auth::user()->is_admin)
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.home')}}">
                         Admin Home
-                        <span class="badge rounded-pill bg-warning">
+                        <span class="badge rounded-pill bg-success text-dark">
                             {{\App\Models\User::ToBeRevisionedCount()}}
                         </span>
                     </a>
                 </li>
-                @endif
+                @endif --}}
 
                 <div class="dropdown">
                     <a class="btn btn-lr mx-2 border-0 shadow dropdown-toggle" href="#" role="button"
