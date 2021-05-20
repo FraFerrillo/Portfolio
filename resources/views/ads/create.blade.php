@@ -7,7 +7,7 @@
                         Nuovo Annuncio
                     </div>
                     <div class="card-body">
-                        <h3>DEBUG:: SECRET {{$uniqueSecret}}</h3>
+                        {{-- <h3>DEBUG:: SECRET {{$uniqueSecret}}</h3> --}}
                         
                         @if (session('message'))
                         <div class="alert alert-success my-3">

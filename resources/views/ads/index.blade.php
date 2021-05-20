@@ -1,33 +1,52 @@
 <x-layout>
     <div class="container mb-5">
-        <div class="row">
+        <div class="row justify-content-around text-center">
+            <h1 class="ml11">
+                <span class="text-wrapper">
+                  <span class="line line1"></span>
+                  <span class="letters">Tutti gli annunci</span>
+                </span>
+              </h1>
             @foreach ($ads as $ad)
-                <div class="col-12 col-md-4 mt-5">
-                    <div class="p-2">
-                        <div class="text-center">
-                            @if(Auth::user())
-                                <form action="{{route('revisor.undo', $ad->id)}}" method=POST>
-                                @csrf
-                                <button type="submit" class="btn btn-lr">Revisiona</button>
-                                </form>
-                            @endif
-                        </div>
+                <div class="col-12 col-md-4 d-flex flex-wrap justify-content-center mt-5">
+                    
 
-
-                        <div class="card my-2 shadow border-0" style="width: 18rem;">
-                            <div id="owl-demo" class="owl-carousel owl-theme">
-                                @foreach ($ad->images as $image)
-                                <div class="item"><img src="{{$image->getUrl(200, 200)}}" alt="The Last of us"></div>
-                                @endforeach
+                        <div class="card my-3 shadow border-0 text-center" style="width: 20rem;">
+                            <div id="owl-demo" class="owl-carousel owl-theme bg-light">
+                                @if ($ad->images->count())
+                                    @foreach ($ad->images as $image)
+                                        <div class="item"><img src="{{$image->getUrl(200, 200)}}" alt="Card-image"></div>
+                                    @endforeach
+                                @else 
+                                    <div class="item"><img class="card-img-top" src="\image\LOGOP (1).png" alt="Card-image"></div>
+                                @endif
                             </div>
                             <div class="card-body bg-light">
-                                <h4 class="card-title text-start"><a href="{{route('ads.show', compact('ad'))}}">{{$ad->title}}</a></h4>
-                                <h5 class="card-text text-start">{{$ad->body}}</h5>
-                                <h5 class="text-center">{{$ad->price}}€</h5>
-                                <strong>Category: <a href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}">{{$ad->category->name}}</a></strong><i>{{$ad->created_at->format('d/m/Y')}} - {{$ad->user->name}}</i>
+                                <h4 class="card-title text-start"><a class="text-decoration-none c-ter" href="{{route('ads.show', compact('ad'))}}">{{$ad->title}}</a></h4>
+                                <h5 class="card-text text-start">{{Illuminate\Support\Str::limit($ad->body, 25, $end='...')}}</h5>
+                                <br>
+                                <h6 class="text-start">
+                                        <strong>Categoria: 
+                                        <a class="text-decoration-none" href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}">{{$ad->category->name}}</a></strong>
+                                    <br> 
+                                        <strong>Autore: </strong>{{$ad->user->name}}   
+                                    <br> 
+                                        <strong>Creato il: </strong>{{$ad->created_at->format('d/m/Y')}}
+                                </h6>
+                                <hr>
+                                <h5 class="text-start">Prezzo: <strong class="c-ter">{{$ad->price}}€</strong></h5>
                             </div>
-                            </div>
+                            {{-- TASTO REVISORE --}}
+                            @if(Auth::user())
+                                <div class="card-footer bg-light text-center">
+                                    <form action="{{route('revisor.undo', $ad->id)}}" method=POST>
+                                    @csrf
+                                    <button type="submit" class="btn btn-lr text-center">Revisiona</button>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
+                    
                 </div>
             @endforeach
         </div>

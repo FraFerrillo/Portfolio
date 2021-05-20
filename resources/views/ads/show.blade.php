@@ -13,7 +13,7 @@
             @endif
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <div class="card bg-light border-0 shadow mt-5">
                             <div class="card-header bg-dark text-white"> Annuncio # {{$ad->id}}</div>
 
@@ -42,34 +42,22 @@
 
                                 </div>
 
+                                <hr>
+
                                 <div class="row">
-                                    <div class="col-md-2"><h3>Immagini</h3></div>
-                                    <div class="col-md-10">
+                                    
+                                    <div class="col-md-4"><h3>Immagini</h3></div> 
+                                    
+                                    <div class="col-md-6">
+                                    <div id="owl-demo" class="owl-carousel owl-theme bg-light">
                                         @if ($ad->images->count())
-                                        <x-_ad
-                                            image="{{$ad->images->first()->getUrl(200, 200)}}"
-                                            title=""
-                                            body=""
-                                            href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
-                                            category="{{$ad->category->name}}"
-                                            date="{{$ad->created_at->format('d/m/Y')}}"
-                                            user="{{$ad->user->name}}"
-                                            price="{{$ad->price}}"
-                                            link="{{route('ads.show', compact('ad'))}}"
-                                        />
-                                        @else
-                                        <x-_ad
-                                        image="https://via.placeholder.com/150/300"
-                                        title=""
-                                        body=""
-                                        href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
-                                        category="{{$ad->category->name}}"
-                                        date="{{$ad->created_at->format('d/m/Y')}}"
-                                        user="{{$ad->user->name}}"
-                                        price="{{$ad->price}}"
-                                        link="{{route('ads.show', compact('ad'))}}"
-                                        />
+                                            @foreach ($ad->images as $image)
+                                                <div class="item"><img src="{{$image->getUrl(200, 200)}}" alt="Card-image"></div>
+                                            @endforeach
+                                        @else 
+                                            <div class="item"><img class="card-img-top" src="\image\LOGOP (1).png" alt="Card-image"></div>
                                         @endif
+                                    </div>
                                     </div>
                                 </div>
                             </div>
