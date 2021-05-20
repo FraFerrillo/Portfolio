@@ -13,18 +13,21 @@
                             @endif
                         </div>
 
-                        @foreach ($ad->images as $image)
-                            <div class="card my-2 shadow border-0" style="width: 18rem;">
-                                <img src="{{$image->getUrl(200, 200)}}" class="card-img-top" alt="...">
-                                <div class="card-body bg-light">
+
+                        <div class="card my-2 shadow border-0" style="width: 18rem;">
+                            <div id="owl-demo" class="owl-carousel owl-theme">
+                                @foreach ($ad->images as $image)
+                                <div class="item"><img src="{{$image->getUrl(200, 200)}}" alt="The Last of us"></div>
+                                @endforeach
+                            </div>
+                            <div class="card-body bg-light">
                                 <h4 class="card-title text-start"><a href="{{route('ads.show', compact('ad'))}}">{{$ad->title}}</a></h4>
                                 <h5 class="card-text text-start">{{$ad->body}}</h5>
                                 <h5 class="text-center">{{$ad->price}}€</h5>
                                 <strong>Category: <a href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}">{{$ad->category->name}}</a></strong><i>{{$ad->created_at->format('d/m/Y')}} - {{$ad->user->name}}</i>
-                                </div>
                             </div>
-                        @endforeach
-                    </div>
+                            </div>
+                        </div>
                 </div>
             @endforeach
         </div>
