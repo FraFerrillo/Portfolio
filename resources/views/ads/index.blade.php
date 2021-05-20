@@ -2,7 +2,7 @@
     <div class="container mb-5">
         <div class="row">
             @foreach ($ads as $ad)
-                <div class="col-12 col-md-4 justify-content-center align-items-center d-flex flex-wrap mt-5">
+                <div class="col-12 col-md-4 mt-5">
                     <div class="p-2">
                         <div class="text-center">
                             @if(Auth::user())
@@ -12,31 +12,18 @@
                                 </form>
                             @endif
                         </div>
-                        @if ($ad->images->count())
-                        <x-_ad
-                            image="{{$ad->images->first()->getUrl(200, 200)}}"
-                            title="{{$ad->title}}"
-                            body="{{$ad->body}}"
-                            href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
-                            category="{{$ad->category->name}}"
-                            date="{{$ad->created_at->format('d/m/Y')}}"
-                            user="{{$ad->user->name}}"
-                            price="{{$ad->price}}"
-                            link="{{route('ads.show', compact('ad'))}}"
-                        />
-                        @else
-                        <x-_ad
-                        image="https://via.placeholder.com/150/300"
-                        title="{{$ad->title}}"
-                        body="{{$ad->body}}"
-                        href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}"
-                        category="{{$ad->category->name}}"
-                        date="{{$ad->created_at->format('d/m/Y')}}"
-                        user="{{$ad->user->name}}"
-                        price="{{$ad->price}}"
-                        link="{{route('ads.show', compact('ad'))}}"
-                        />
-                        @endif
+
+                        @foreach ($ad->images as $image)
+                            <div class="card my-2 shadow border-0" style="width: 18rem;">
+                                <img src="{{$image->getUrl(200, 200)}}" class="card-img-top" alt="...">
+                                <div class="card-body bg-light">
+                                <h4 class="card-title text-start"><a href="{{route('ads.show', compact('ad'))}}">{{$ad->title}}</a></h4>
+                                <h5 class="card-text text-start">{{$ad->body}}</h5>
+                                <h5 class="text-center">{{$ad->price}}€</h5>
+                                <strong>Category: <a href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}">{{$ad->category->name}}</a></strong><i>{{$ad->created_at->format('d/m/Y')}} - {{$ad->user->name}}</i>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             @endforeach

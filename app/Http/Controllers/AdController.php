@@ -9,6 +9,7 @@ use App\Jobs\ResizeImage;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdRequest;
 use App\Jobs\GoogleVisionLabelImage;
+use App\Jobs\GoogleVisionRemoveFaces;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
@@ -33,7 +34,7 @@ class AdController extends Controller
 
         $ads = Ad::where('is_accepted', true)
         ->orderBy('created_at', 'desc')
-        ->simplePaginate(6);
+        ->Paginate(6);
         // dd($ads->all());
         // $ad_images = AdImage::all();
         return view('ads.index', compact('ads'));
@@ -96,25 +97,19 @@ class AdController extends Controller
             $newFileName = "public/ads/{$a->id}/{$fileName}";
             Storage::move($image, $newFileName);
 
-            dispatch(new ResizeImage(
-                $newFileName,
-                200,
-                200
-            ));
-                      dispatch(new ResizeImage(
-                $newFileName,
-                400,
-                300
-            ));
-
-
-
             $i->file = $newFileName;
             $i->ad_id = $a->id;
 
             $i->save();
-            dispatch(new GoogleVisionSafeSearchImage($i->id));
-            dispatch(new GoogleVisionLabelImage($i->id));
+
+            GoogleVisionSafeSearchImage::withChain([
+                new GoogleVisionLabelImage($i->id),
+                new GoogleVisionRemoveFaces($i->id),
+                new ResizeImage($i->file,200,200),
+                new ResizeImage($i->file, 400,300)
+            ])->dispatch($i->id);
+
+
         }
 
         File::deleteDirectory(storage_path("/app/public/temp/{$uniqueSecret}"));

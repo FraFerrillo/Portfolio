@@ -130,7 +130,7 @@
                     </div>
                     <div class="row">
                     @foreach ($ads as $ad)
-                    <div class="col-12 col-md-4 justify-content-center align-items-center d-flex flex-wrap mt-5">
+                    <div class="col-12 col-md-4 mt-5">
                         <div class="p-2">
                             @if ($ad->images->count())
                             <x-_ad
