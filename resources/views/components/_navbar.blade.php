@@ -134,6 +134,9 @@
                                 @csrf
                             </form>
                         </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('ads.index_user') }}">Profilo</a>
+                        </li>
                     </ul>
                 </div>
                 @endguest

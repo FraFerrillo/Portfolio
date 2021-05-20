@@ -35,9 +35,12 @@
                                 </h6>
                                 <hr>
                                 <h5 class="text-start">Prezzo: <strong class="c-ter">{{$ad->price}}€</strong></h5>
-                            </div>
+                            </div>   
+
+
                             {{-- TASTO REVISORE --}}
                             @if(Auth::user())
+                            
                                 <div class="card-footer bg-light text-center">
                                     <form action="{{route('revisor.undo', $ad->id)}}" method=POST>
                                     @csrf

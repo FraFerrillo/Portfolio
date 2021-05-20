@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Models\User;
 use App\Models\AdImage;
 use App\Models\Category;
 use App\Jobs\ResizeImage;
@@ -222,4 +223,24 @@ class AdController extends Controller
         $ads = Ad::search($q)->where('is_accepted', true)->get();
         return view('ads.search_results', compact('q','ads'));
     }
+
+
+    public function adsAttachUser(ad $ad)
+    {
+        Auth::user()->adsFav()->attach($ad->id);
+        return redirect()->back();
+    }
+
+    public function adsDetachUser(ad $ad)
+    {
+        Auth::user()->adsFav()->detach($ad->id);
+        return redirect()->back();
+    }
+ 
+    public function adsIndexUser(ad $ad)
+    {
+        $ads = Auth::user()->adsFav()->get();
+        return view('ads.index_user', compact('ads'));
+    }
+
 }

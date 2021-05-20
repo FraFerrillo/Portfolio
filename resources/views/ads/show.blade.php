@@ -1,4 +1,5 @@
 <x-layout>
+
     <div class="container">
         <div class="row">
             @if (session('message'))
@@ -59,6 +60,20 @@
                                         @endif
                                     </div>
                                     </div>
+                                </div>
+                                <div>
+                                @if (Auth::user()->adsFav->pluck('id')->contains($ad->id))
+                            <form class="me-3" action="{{route('ads.detach_user', compact('ad'))}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn-lg c-sec"><i class="fas fa-star"></i></button>
+                            </form>
+                            @else
+                            <form class="me-3" action="{{route('ads.attach_user', compact('ad'))}}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn-lg bg-transparent"><i class="far fa-star"></i></button>
+                            </form>
+                            @endif
                                 </div>
                             </div>
                         </div>
