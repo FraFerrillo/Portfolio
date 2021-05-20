@@ -12,15 +12,13 @@
                     Accesso non consentito -solo per admin
                 </div>
                 @endif
-                <h1 class="ml11">
+                <h1 class="ml11 mb-4">
                     <span class="text-wrapper">
                       <span class="line line1"></span>
                       <span class="letters">{{ __('ui.welcome')}}</span>
                     </span>
                   </h1>
                   
-                  
-                {{-- <h1 class="text-center fw-bold text-uppercase text-black ">{{ __('ui.welcome')}}</h1> --}}
                 <!-- MAIN-CAROUSEL -->
                 <div id="myCarousel" class="carousel slide pointer-event" data-bs-ride="carousel">
                     <div class="carousel-indicators">
