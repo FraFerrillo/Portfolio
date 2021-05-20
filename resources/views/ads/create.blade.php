@@ -8,7 +8,7 @@
                     </div>
                     <div class="card-body">
                         {{-- <h3>DEBUG:: SECRET {{$uniqueSecret}}</h3> --}}
-                        
+
                         @if (session('message'))
                         <div class="alert alert-success my-3">
                             {{session('message')}}
@@ -54,11 +54,6 @@
                                     <label for="price" class="form-label">Prezzo</label>
                                     <input name="price" type="number" price="price" class="form-control" id="price" aria-describedby="titleHelp" value="{{old('price')}}">
                                 </div>
-                                {{-- <div class="mb-3">
-                                    <label for="img">Carica un'immagine</label>
-                                    <input type="file" value="{{old('img')}}" name="img" class="form-control" id="img">
-                                </div> --}}
-
                                 <div class="form-group row">
                                     <label for="images" class="col-md-12 col-form-label text-md-end">Immagini</label>
                                     <div class="col-md-12">

@@ -54,6 +54,10 @@ Route::post('/revisor/ad/{id}',[RevisorController::class,'undo'])->name('revisor
 Route::get('/contattaci', [ContactController::class,'contactUs'] )->name('contact_us');
 Route::post('/salva/contatto', [ContactController::class, 'storeContact'])->name('save_contact');
 
+//? REQUEST GUEST MAIL
+Route::get('/contattaci/guest', [ContactController::class,'guestContact'] )->name('guest_contact');
+Route::post('/salva/contatto/guest', [ContactController::class, 'storeGuestContact'])->name('save_guest_contact');
+
 //!ADMIN AREA
 Route::get('/admin/home',[AdminController::class,'index'])->name('admin.home');
 

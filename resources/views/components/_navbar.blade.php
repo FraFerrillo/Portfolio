@@ -72,9 +72,9 @@
                         Revisore</a>
                 </li>
                 @endauth
-                {{-- <li class="nav-item">
-                        <a class="nav-link active hoverborder" aria-current="page" href="{{route('contact_us')}}">Contattaci</a>
-                </li> --}}
+                <li class="nav-item">
+                        <a class="nav-link active hoverborder" aria-current="page" href="{{route('guest_contact')}}">Contattaci</a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
