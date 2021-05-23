@@ -34,7 +34,7 @@
                             <img class="img-fluid" width="100%" height="100%" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
 
                             <div class="container">
-                                <div class="carousel-caption text-start">
+                                <div class="carousel-caption c-i-inset text-start">
                                     <h1 class="text-white text-wrapper">Abbigliamento</h1>
                                     <p>Some representative placeholder content for the first slide of the carousel.</p>
                                     <p><a class="btn btn-lg btn-lr" href="#">Scopri di più</a></p>
@@ -45,7 +45,7 @@
                             <img class="img-fluid" width="100%" height="100%" src="https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
 
                             <div class="container">
-                                <div class="carousel-caption">
+                                <div class="carousel-caption c-i-inset">
                                     <h1 class="text-white text-wrapper">Sport</h1>
                                     <p>Some representative placeholder content for the second slide of the carousel.</p>
                                     <p><a class="btn btn-lg btn-lr" href="#">Scopri di più</a></p>
@@ -56,7 +56,7 @@
                             <img class="img-fluid" width="100%" height="100%" src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
 
                             <div class="container">
-                                <div class="carousel-caption text-end ">
+                                <div class="carousel-caption c-i-inset text-end ">
                                     <h1 class="text-white text-wrapper">Informatica</h1>
                                     <p>Some representative placeholder content for the third slide of this carousel.</p>
                                     <p><a class="btn btn-lg btn-lr" href="#">Scopri di più</a></p>
@@ -139,7 +139,7 @@
                         <div class="col-12 col-md-4 d-flex flex-wrap justify-content-center mt-5">
 
 
-                                <div class="card my-3 shadow border-0 text-center" style="width: 20rem;">
+                                <div class="card card-ad my-3 shadow border-0 text-center" style="width: 20rem;">
                                     <div id="owl-demo" class="owl-carousel owl-theme bg-light">
                                         @if ($ad->images->count())
                                             @foreach ($ad->images as $image)

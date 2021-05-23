@@ -21,22 +21,22 @@
                             <div class="card-body">
 
                                 <div class="row">
-                                    
-                                    <div class="col-md-4"><h3>Annunci salvati</h3></div> 
-                                    
+
+                                    <div class="col-md-4"><h3>Annunci salvati</h3></div>
+
                                     <div class="col-md-6">
 
                 @foreach ($ads as $ad)
                 <div class="col-10 d-flex justify-content-center mt-5">
-                    
 
-                        <div class="card my-3 shadow border-0 text-center" style="width: 20rem;">
+
+                        <div class="card card-ad my-3 shadow border-0 text-center" style="width: 20rem;">
                             <div id="owl-demo" class="owl-carousel owl-theme bg-light">
                                 @if ($ad->images->count())
                                     @foreach ($ad->images as $image)
                                         <div class="item"><img src="{{$image->getUrl(200, 200)}}" alt="Card-image"></div>
                                     @endforeach
-                                @else 
+                                @else
                                     <div class="item"><img class="card-img-top" src="\image\LOGOP (1).png" alt="Card-image"></div>
                                 @endif
                             </div>
@@ -45,11 +45,11 @@
                                 <h5 class="card-text text-start">{{Illuminate\Support\Str::limit($ad->body, 25, $end='...')}}</h5>
                                 <br>
                                 <h6 class="text-start">
-                                        <strong>Categoria: 
+                                        <strong>Categoria:
                                         <a class="text-decoration-none" href="{{route('public.ads.category',[$ad->category->name,$ad->category->id])}}">{{$ad->category->name}}</a></strong>
-                                    <br> 
-                                        <strong>Autore: </strong>{{$ad->user->name}}   
-                                    <br> 
+                                    <br>
+                                        <strong>Autore: </strong>{{$ad->user->name}}
+                                    <br>
                                         <strong>Creato il: </strong>{{$ad->created_at->format('d/m/Y')}}
                                 </h6>
                                 <hr>
@@ -68,10 +68,10 @@
                                 </form>
                                 @endif
                                     </div>
-                            </div>   
+                            </div>
 
                         </div>
-                    
+
                 </div>
                 @endforeach
                                 </div>
